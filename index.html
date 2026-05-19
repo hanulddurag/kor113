@@ -3,246 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>중학 국어 1-1 - 3. 세상을 담는 언어, 우리를 잇는 매체</title>
-    <!-- Tailwind CSS (Aesthetics & Layout) -->
+    <title>개념 해설서: 한자로 풀이하는 친절한 국어 9품사 가이드</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons (SVG 기반 아이콘 라이브러리) -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f3f4f6;
         }
-        /* Custom Animation */
-        .bounce-subtle {
-            animation: bounceSubtle 2s infinite;
-        }
-        @keyframes bounceSubtle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .hanja-badge {
+            font-family: serif;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between text-gray-800">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-    <!-- HEADER -->
-    <header class="bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-white text-teal-600 p-2 rounded-lg font-bold text-xl shadow-inner">📖</div>
+    <!-- Header Navigation -->
+    <header class="bg-indigo-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-400 text-indigo-900 p-2 rounded-lg font-bold text-xl tracking-wider">
+                    品詞
+                </div>
                 <div>
-                    <h1 class="font-bold text-lg md:text-xl">중학 국어 1-1 (박현숙)</h1>
-                    <p class="text-xs text-teal-100">3단원. 세상을 담는 언어, 우리를 잇는 매체</p>
+                    <h1 class="text-xl font-bold">국어 9품사 마스터 가이드</h1>
+                    <p class="text-xs text-indigo-200">한자로 쉽게 풀고, AI 선생님에게 물어보는 인터랙티브 자습서</p>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-1">
-                <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium transition hover:bg-teal-500 bg-teal-700" id="btn-dashboard">홈</button>
-                <button onclick="switchTab('grammar')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium transition hover:bg-teal-500" id="btn-grammar">01. 품사로 빚은 세상</button>
-                <button onclick="switchTab('media')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium transition hover:bg-teal-500" id="btn-media">02. 상호작용 매체</button>
-                <button onclick="switchTab('journal')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium transition hover:bg-teal-500" id="btn-journal">📝 성찰 일지</button>
-            </nav>
-            <div class="md:hidden">
-                <button onclick="toggleMobileMenu()" class="text-white focus:outline-none">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+            <nav class="flex flex-wrap justify-center gap-1 md:gap-2">
+                <button onclick="scrollToSection('intro')" class="px-3 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-800 transition">도입</button>
+                <button onclick="scrollToSection('criteria')" class="px-3 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-800 transition">3대기준</button>
+                <button onclick="scrollToSection('parts')" class="px-3 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-800 transition">5언9품사</button>
+                <button onclick="scrollToSection('theater')" class="px-3 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-800 transition">품사vs성분</button>
+                <button onclick="scrollToSection('quiz')" class="px-3 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-800 transition">미니퀴즈</button>
+                <button onclick="scrollToSection('ai-tutor')" class="px-3 py-1.5 bg-amber-400 text-indigo-950 rounded-full text-sm font-bold hover:bg-amber-300 transition flex items-center gap-1">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI 튜터
                 </button>
-            </div>
-        </div>
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-teal-700 px-4 py-2 space-y-1">
-            <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600">홈</button>
-            <button onclick="switchTab('grammar'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600">01. 품사로 빚은 세상</button>
-            <button onclick="switchTab('media'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600">02. 상호작용 매체</button>
-            <button onclick="switchTab('journal'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600">📝 성찰 일지</button>
+            </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-grow">
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-16">
 
-        <!-- TAB 1: DASHBOARD (HOME) -->
-        <section id="tab-dashboard" class="tab-content block space-y-6">
-            <!-- Hero Section -->
-            <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center justify-between border border-gray-100 gap-6">
-                <div class="space-y-4 max-w-lg">
-                    <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-1 rounded-full">단원 소개</span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight leading-snug">
-                        우리는 언어와 매체로<br>세상을 담고 서로를 잇습니다
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                        우리말의 성질을 가진 '품사'에 대해 신나게 분류해 보고, 블로그와 SNS처럼 일상에서 소통을 연결해 주는 '상호 작용적 매체'를 바르게 사용하는 방법을 다양한 퀴즈와 시뮬레이터로 학습해 보아요!
+        <!-- 1. 품사의 문을 열며 (Intro) -->
+        <section id="intro" class="bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-1 space-y-4">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Chapter 1. 시작하며</span>
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
+                    단어에도 <span class="text-indigo-600 underline decoration-amber-400 decoration-4 underline-offset-4">'끼리끼리'</span> 모이는 성질이 있다!
+                </h2>
+                <p class="text-slate-600 leading-relaxed text-base">
+                    여러분, 국어 공부를 하다 보면 수만 개의 단어 앞에 막막해질 때가 있죠? 하지만 겁먹을 필요 없습니다! 우리 조상들은 이 수많은 단어를 성질이 공통된 것끼리 모아 아주 깔끔하게 분류해 두었거든요. 그것이 바로 <strong class="text-slate-900">‘품사(品詞)’</strong>입니다.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-indigo-500 space-y-2">
+                    <p class="text-sm font-bold text-indigo-900 flex items-center gap-1.5">
+                        <i data-lucide="bookmark" class="w-4 h-4 text-indigo-600"></i> 품사(品詞)의 정의
                     </p>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <button onclick="switchTab('grammar')" class="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2.5 px-5 rounded-lg text-sm transition-all shadow-md hover:shadow-lg flex items-center space-x-1">
-                            <span>01. 품사 공부하러 가기</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                        <button onclick="switchTab('media')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-2.5 px-5 rounded-lg text-sm transition-all flex items-center space-x-1">
-                            <span>02. 매체 시뮬레이터</span>
-                        </button>
-                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        단어를 일정한 기준(<strong class="text-indigo-600">형태, 기능, 의미</strong>)에 따라 공통된 성질을 지닌 것끼리 모아 놓은 단어의 갈래입니다.
+                    </p>
                 </div>
-                <!-- Visual Card Illust (CSS + Emoji) -->
-                <div class="w-full md:w-80 bg-gradient-to-tr from-teal-50 to-cyan-50 border border-teal-100 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-inner relative overflow-hidden">
-                    <div class="absolute top-2 right-2 text-6xl opacity-10">✨</div>
-                    <div class="text-6xl mb-3 bounce-subtle">🥣📳</div>
-                    <span class="text-xs font-bold text-teal-700 tracking-wider uppercase">학습 목차 요약</span>
-                    <div class="mt-3 space-y-2 w-full text-xs text-left">
-                        <div class="bg-white p-2 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
-                            <span class="font-medium text-gray-700">1. 형태·기능·의미별 9품사</span>
-                            <span class="text-teal-600 font-bold">체험형</span>
-                        </div>
-                        <div class="bg-white p-2 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
-                            <span class="font-medium text-gray-700">2. 매체 소통 맥락과 예절</span>
-                            <span class="text-cyan-600 font-bold">미션형</span>
-                        </div>
-                        <div class="bg-white p-2 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
-                            <span class="font-medium text-gray-700">3. 매체 소통 성찰 일지</span>
-                            <span class="text-indigo-600 font-bold">기록형</span>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-slate-600 text-sm">
+                    💡 <strong class="text-slate-800">이게 왜 중요할까요?</strong> 단어를 품사별로 나누면 단어들 사이의 복잡한 관계와 특성을 마법처럼 한눈에 꿰뚫어 볼 수 있기 때문입니다. 문법의 지도를 손에 넣는 것과 같죠!
+                </p>
             </div>
-
-            <!-- 학습 목표 카드 2가지 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- 01 품사 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="p-3 bg-teal-50 text-teal-600 rounded-lg">
-                            <i data-lucide="book-open" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-teal-600 font-bold">첫 번째 배움</span>
-                            <h3 class="font-bold text-lg text-gray-900">품사로 빚어낸 세상</h3>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        우리말의 수많은 단어들을 성질이 비슷한 것끼리 묶은 것을 <strong>'품사'</strong>라고 합니다. 품사의 기준(형태, 기능, 의미)을 알고, '체언, 관계언, 수식언, 독립언, 용언' 등 아홉 가지 품사의 핵심 원리를 직접 게임으로 정복해보세요!
-                    </p>
-                    <div class="border-t border-gray-50 pt-3 flex justify-between items-center text-xs text-gray-500">
-                        <span>💡 수많은 단어들을 성질에 따라 나눈 그릇</span>
-                        <span class="text-teal-600 font-semibold cursor-pointer" onclick="switchTab('grammar')">체험하기 &rarr;</span>
-                    </div>
-                </div>
-
-                <!-- 02 매체 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="p-3 bg-cyan-50 text-cyan-600 rounded-lg">
-                            <i data-lucide="message-square" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <span class="text-xs text-cyan-600 font-bold">두 번째 배움</span>
-                            <h3 class="font-bold text-lg text-gray-900">상호 작용적 매체와 소통</h3>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        스마트폰, SNS, 단체 메신저 같은 <strong>상호 작용적 매체</strong>는 우리의 삶을 어떻게 바꿨을까요? 대화 상대와의 관계, 상황, 개인정보 보호 등의 맥락을 이해하고 바르게 대화하는 예절을 대화 시뮬레이션을 통해 직접 경험해 봅니다.
-                    </p>
-                    <div class="border-t border-gray-50 pt-3 flex justify-between items-center text-xs text-gray-500">
-                        <span>💡 가상의 SNS 및 메신저 상황극 퀘스트</span>
-                        <span class="text-cyan-600 font-semibold cursor-pointer" onclick="switchTab('media')">시작하기 &rarr;</span>
+            <div class="w-full md:w-1/3 flex justify-center">
+                <div class="bg-gradient-to-tr from-indigo-500 to-purple-600 p-8 rounded-2xl text-white text-center shadow-lg relative overflow-hidden w-full max-w-xs">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full"></div>
+                    <i data-lucide="map" class="w-16 h-16 mx-auto mb-4 text-amber-300"></i>
+                    <h3 class="text-xl font-bold mb-1">문법의 지도</h3>
+                    <p class="text-xs text-indigo-100 mb-4">9품사만 이해하면 수만 개 단어의 위치가 보입니다!</p>
+                    <div class="bg-white/20 py-2 px-4 rounded-lg inline-block text-xs font-semibold">
+                        지금 정복하러 가기 👇
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 2: GRAMMAR (품사로 빚어낸 세상) -->
-        <section id="tab-grammar" class="tab-content hidden space-y-6">
-            <!-- 9품사 핵심 요약 배너 -->
-            <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 rounded-xl p-5">
-                <div class="flex items-start space-x-3">
-                    <div class="bg-teal-600 text-white p-1.5 rounded-md mt-1">
-                        <i data-lucide="info" class="w-4 h-4"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-teal-900 text-sm md:text-base">우리말의 9품사 분류 기준</h4>
-                        <p class="text-xs md:text-sm text-teal-800 mt-1">
-                            국어 단어는 <strong>형태</strong>(형태 변화 유무: 가변어/불변어), <strong>기능</strong>(체언/관계언/수식언/독립언/용언), <strong>의미</strong>(명사/대명사/수사/조사/관형사/부사/감탄사/동사/형용사) 등 세 가지 기준으로 나뉩니다.
-                        </p>
-                    </div>
-                </div>
+        <!-- 2. 품사 분류의 3대 기준 (Criteria) -->
+        <section id="criteria" class="space-y-6">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Chapter 2. 분류 잣대</span>
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900">품사 분류의 3대 기준</h2>
+                <p class="text-sm text-slate-500">국어의 모든 단어는 아래 세 가지 기준을 통과하며 제자리를 찾아갑니다.</p>
             </div>
 
-            <!-- 품사 분류 체험 실습실 -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <div class="text-center max-w-lg mx-auto mb-6">
-                    <span class="text-teal-600 font-bold text-xs uppercase tracking-wider">Interactive Game</span>
-                    <h3 class="font-bold text-xl md:text-2xl text-gray-900 mt-1">품사 그릇에 단어 담기 대소동! 🥣</h3>
-                    <p class="text-xs md:text-sm text-gray-500 mt-2">
-                        교과서 첫머리처럼, 아래 제시된 단어 카드들의 알맞은 품사 그릇을 클릭/터치하여 모든 단어 카드를 올바른 그릇에 옮겨 담아 보세요!
-                    </p>
+            <!-- Interactive Tab-based Explorer for Criteria -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="flex border-b border-slate-100 bg-slate-50">
+                    <button onclick="switchTab('form')" id="tab-form" class="flex-1 py-4 text-center font-bold text-sm md:text-base text-indigo-600 border-b-2 border-indigo-600 transition">
+                        1. 형태 (Form)
+                    </button>
+                    <button onclick="switchTab('func')" id="tab-func" class="flex-1 py-4 text-center font-bold text-sm md:text-base text-slate-400 hover:text-slate-600 transition">
+                        2. 기능 (Function)
+                    </button>
+                    <button onclick="switchTab('mean')" id="tab-mean" class="flex-1 py-4 text-center font-bold text-sm md:text-base text-slate-400 hover:text-slate-600 transition">
+                        3. 의미 (Meaning)
+                    </button>
                 </div>
 
-                <!-- Game Container -->
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <!-- Left: Word Card to Category -->
-                    <div class="lg:col-span-1 bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
-                        <span class="text-xs font-bold text-slate-500 mb-3">현재 분류할 단어</span>
-                        
-                        <!-- Word Deck Container -->
-                        <div id="word-deck" class="w-full flex justify-center py-4">
-                            <!-- JS를 통해 단어 카드가 실시간 렌더링 됩니다 -->
-                            <div class="bg-white border-2 border-teal-500 rounded-xl shadow-md p-6 w-full max-w-[180px] text-center transform hover:scale-105 transition duration-200 cursor-pointer">
-                                <span class="text-xs text-teal-600 font-semibold block mb-1" id="card-hint-text">💡 힌트 없음</span>
-                                <h4 class="text-2xl font-extrabold text-gray-800 tracking-wider" id="card-word-text">단어</h4>
-                            </div>
-                        </div>
-
-                        <!-- Progress info -->
-                        <div class="mt-4 w-full space-y-2 text-center">
-                            <div class="text-xs text-gray-500">남은 단어: <span id="game-progress" class="font-bold text-teal-600">0/10</span></div>
-                            <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
-                                <div id="game-progress-bar" class="bg-teal-500 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
-                            </div>
-                            <div id="game-score-box" class="text-xs font-semibold text-emerald-600 mt-1">맞힌 개수: <span id="game-score">0</span></div>
-                        </div>
-
-                        <!-- Reset Button -->
-                        <button onclick="resetGrammarGame()" class="mt-4 text-xs text-slate-500 hover:text-teal-600 flex items-center space-x-1">
-                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                            <span>처음부터 다시 하기</span>
-                        </button>
-                    </div>
-
-                    <!-- Right: Big Category Bowls (그릇) -->
-                    <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <!-- Bowl 1: 체언 -->
-                        <div onclick="selectBowl('체언')" class="bowl-btn cursor-pointer bg-amber-50 hover:bg-amber-100 border-2 border-dashed border-amber-300 rounded-xl p-4 flex flex-col items-center justify-between transition-all hover:scale-[1.02]">
-                            <div class="text-center">
-                                <span class="text-2xl">🥣</span>
-                                <h4 class="font-bold text-amber-800 mt-1">체언 그릇</h4>
-                                <p class="text-[10px] text-amber-600 mt-1">문장에서 주어 목적어 등 뼈대가 되는 단어 (명사, 대명사, 수사)</p>
-                            </div>
-                            <div class="w-full mt-3 bg-white/70 rounded-lg p-2 min-h-[60px] text-center" id="bowl-체언">
-                                <span class="text-xs text-gray-400 italic">비어 있음</span>
-                            </div>
-                        </div>
-
-                        <!-- Bowl 2: 용언 -->
-                        <div onclick="selectBowl('용언')" class="bowl-btn cursor-pointer bg-rose-50 hover:bg-rose-100 border-2 border-dashed border-rose-300 rounded-xl p-4 flex flex-col items-center justify-between transition-all hover:scale-[1.02]">
-                            <div class="text-center">
-                                <span class="text-2xl">🥣</span>
-                                <h4 class="font-bold text-rose-800 mt-1">용언 그릇</h4>
-                                <p class="text-[10px] text-rose-600 mt-1">움직임이나 성질을 서술하고 형태가 변하는 단어 (동사, 형용사)</p>
-                            </div>
-                            <div class="w-full mt-3 bg-white/70 rounded-lg p-2 min-h-[60px] text-center" id="bowl-용언">
-                                <span class="text-xs text-gray-400 italic">비어 있음</span>
-                            </div>
-                        </div>
-
-                        <!-- Bowl 3: 수식언 -->
-                        <div onclick="selectBowl('수식언')" class="bowl-btn cursor-pointer bg-emerald-50 hover:bg-emerald-100 border-2 border-dashed border-emerald-300 rounded-xl p-4 flex flex-col items-center justify-between transition-all hover:scale-[1.02]">
-                            <div class="text-center">
-                                <span class="text-2xl">🥣</span>
-                                <h4 class="font-bold text-emerald-800 mt-1">수식언 그릇</h4>
-                                <p class="text-[10px] text-emerald-600 mt-1">다른 단어를 꾸며주는 역할을 하는 단어 (관형사, 부사)</p>
-                            </div>
-                            <div class="w-full mt-3 bg-white/70 rounded-lg p-2 min-h-[60px] text-center" id="bowl-수식언">
-                                <span class="text-xs text-gray-400 italic">비어 있음</span>
-                            </div>
-                        </div>
-
-                        <!-- Bowl 4: 관계언 -->
-                        <div onclick="selectBowl('관계언')" class="bowl-btn cursor-pointer bg-blue-50 hover:bg-blue-100 border-2 border-dashed border-blue-300 rounded-
+                <div class="p-6 md:p-8">
+                    <!-- Tab: Form -->
+                    <div id="content-form" class="space-y-6">
+                        <div class="flex flex-col md:flex-row gap-6 items-center">
+                            <div class="flex-1 space-y-4">
+                                <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-700 p-1.5 rounded-lg"><i data-lucide="layers" class="w-5 h-5"></i></span>
+                                    문장에서 쓰일 때 모양이 변하는가?
+                                </h3>
+                                <p class="text-slate-600 leading-relaxed text-sm">
+                                    단어가 문장 속에서 쓰일 때, 주변 환경에 따라 꼬리(어미)를 바꾸어 형태를 변형시킬 수 있는지를 판단합니다.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded">변하지 않음</span>
+                                        <h4 class="text-lg font-bold text-emerald
